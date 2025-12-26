@@ -1,1 +1,44 @@
+`timescale 1ns / 1ps
 
+////////////////////////////////////////////////////////////////////////////////// 
+                                                                                        
+// Gate Level Modelling                                                                         
+module mux(input s0, s1, i0, i1, i2, i3, output y);                                     
+                                                                                        
+wire a, b, c, d;                                                                        
+                                                                                        
+and(a, i0, ~s1, ~s0);                                                                   
+and(b, i1, ~s1, s0);                                                                    
+and(c, i2, s1, ~s0);                                                                    
+and(d, i3, s1, s0);                                                                     
+                                                                                        
+or(y, a, b, c, d);                                                                      
+                                                                                        
+endmodule       
+
+//////////////////////////////////////////////////////////////////////////////////        
+
+// Dataflow Modelling                                                                        
+module mux(input s0, s1, i0, i1, i2, i3, output y);                                     
+                                                                                        
+assign y = (i0 & ~s1 & ~s0 ) | (i1 & ~s1 & s0 ) | (i2 & s1 & ~s0 ) | (i3 & s1 & s0 );   
+                                                                                        
+endmodule           
+
+////////////////////////////////////////////////////////////////////////////////// 
+                                                                                        
+// Behavioral Modelling                                                             
+module mux(input s0, s1, i0, i1, i2, i3, output reg y);                                 
+                                                                                        
+always@(*)begin                                                                         
+    case({s1, s0})                                                                      
+    2'b00: y = i0;                                                                      
+    2'b01: y = i1;                                                                      
+    2'b10: y = i2;                                                                      
+    2'b11: y = i3;                                                                      
+    default: y = 0;                                                                     
+   endcase                                                                              
+  end                                                                                                                                                                          
+endmodule     
+
+////////////////////////////////////////////////////////////////////////////////// 
