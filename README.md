@@ -1,7 +1,7 @@
 # 4-1_MUX-Verilog
 Verilog Code and Testbench for implementation of 4:1 Multiplexer using Gate, Dataflow, Behavioral Level Modelling.
 
-| S1 | S0 | Output (Y) |
+| S1 | S0 | Y |
 | -- | -- | ---------- |
 | 0  | 0  | I0         |
 | 0  | 1  | I1         |
