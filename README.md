@@ -8,4 +8,4 @@ Verilog Code and Testbench for implementation of 4:1 Multiplexer using Gate, Dat
 | 1  | 0  | I2         |
 | 1  | 1  | I3         |
 
-Y = S1′S0′I0 + S1′S0I1 + S1S0′I2 + S1S0I3
+Y = ( S1*S0*I0 ) + ( S1*S0*I1 ) + ( S1*S0*I2 ) + ( S1*S0*I3 )
